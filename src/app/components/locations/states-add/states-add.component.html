@@ -1,0 +1,26 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
+  <div class="container-fluid">
+    <br /><br /><br />
+    <a class="navbar-brand"> </a>
+    <br />
+    <a class="navbar-brand">Agregar región</a>
+  </div>
+</nav>
+<form class="row g-3" [formGroup]="newState">
+  <div class="col-md-6">
+    <label for="validationDefault01" class="form-label">Nombre de región</label>
+    <input
+      type="text"
+      class="form-control"
+      id="validationDefault01"
+      formControlName="name"
+      required
+    />
+  </div>
+
+  <div class="col-12">
+    <button type="submit" class="btn btn-primary" (click)="postState()">
+      Guardar
+    </button>
+  </div>
+</form>

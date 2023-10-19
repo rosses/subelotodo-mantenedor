@@ -1,0 +1,167 @@
+<app-navigation></app-navigation>
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <td *ngIf="admin == '1'">
+        <button class="btn btn-success" (click)="openDialogNew()">
+          NUEVO PRODUCTO
+        </button>
+      </td>
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <input
+          type="radio"
+          class="btn-check"
+          name="options-base"
+          id="option5"
+          autocomplete="off"
+          checked
+          (click)="change()"
+        />
+        <label class="btn" for="option5">CATEGORÍAS</label>
+        <input
+          type="radio"
+          class="btn-check"
+          name="options-base"
+          id="option6"
+          autocomplete="off"
+          (click)="change2()"
+        />
+        <label class="btn" for="option6">UBICACIÓN</label>
+      </ul>
+
+      <button class="btn btn-warning" (click)="ngOnInit()">
+        LIMPIAR FILTROS
+      </button>
+      <div style="display: flex" *ngIf="byCate == true">
+        <select
+          style="max-width: max-content"
+          class="form-select"
+          #cat
+          aria-label="form-select form-select-lg mb-3"
+          aria-label="Large select example"
+          [(ngModel)]="selectedValue"
+          (change)="subca()"
+        >
+          <option [disabled]="true">- CATEGORÍA -</option>
+          <option *ngFor="let item of categorias" value="{{ item.id }}">
+            {{ item.name }}
+          </option>
+        </select>
+
+        <select
+          style="max-width: max-content"
+          class="form-select"
+          aria-label="form-select form-select-lg mb-3"
+          aria-label="Large select example"
+          [(ngModel)]="selectedSub"
+          (change)="subpro()"
+        >
+          <option [disabled]="true">- SUBCATEGORÍA -</option>
+          <option *ngFor="let item of subcategorias" value="{{ item.id }}">
+            {{ item.name }}
+          </option>
+        </select>
+      </div>
+      <div style="display: flex" *ngIf="byUbi == true">
+        <select
+          style="max-width: max-content"
+          class="form-select"
+          #cat
+          aria-label="form-select form-select-lg mb-3"
+          aria-label="Large select example"
+          [(ngModel)]="selectedreg"
+          (change)="getRegi()"
+        >
+          <option [disabled]="true">- REGIÓN -</option>
+          <option *ngFor="let item of regiones" value="{{ item.id }}">
+            {{ item.name }}
+          </option>
+        </select>
+
+        <select
+          style="max-width: max-content"
+          class="form-select"
+          aria-label="form-select form-select-lg mb-3"
+          aria-label="Large select example"
+          [(ngModel)]="selectedcom"
+          (change)="getComu()"
+        >
+          <option [disabled]="true">- COMUNA -</option>
+          <option *ngFor="let item of comunas" value="{{ item.id }}">
+            {{ item.name }}
+          </option>
+        </select>
+      </div>
+
+      <!--<form class="d-flex" role="search">
+        <input
+          class="form-control me-2"
+          type="search"
+          placeholder="Search"
+          aria-label="Search"
+        />
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>-->
+    </div>
+  </div>
+</nav>
+<table class="table table-striped table-hover">
+  <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">TÍTULO</th>
+      <th scope="col">DESCRIPCIÓN</th>
+      <th scope="col">CATEGORÍA</th>
+      <th scope="col">SUBCATEGORÍA</th>
+      <th scope="col">REGIÓN</th>
+      <th scope="col">COMUNA</th>
+      <th scope="col">DIMENSIONES</th>
+      <th scope="col">CONDICIÓN</th>
+      <th scope="col">ESTADO DE VENTA</th>
+      <th scope="col">P. REFERENCIAL</th>
+      <th scope="col">PRECIO</th>
+      <th scope="col">SE AGREGÓ</th>
+      <th scope="col"></th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of productos">
+      <th scope="row">{{ item.id }}</th>
+      <td>{{ item.title }}</td>
+      <td>{{ item.description }}</td>
+      <td>{{ item.category!.name }}</td>
+      <td>{{ item.subcategory!.name }}</td>
+      <td>{{ item.state!.name }}</td>
+      <td>{{ item.city!.name }}</td>
+      <td>
+        ancho {{ item.width }} cm - alto {{ item.height }} cm - largo
+        {{ item.length }} cm - peso {{ item.weight }} kg
+      </td>
+      <td>{{ item.condition }}</td>
+      <td>{{ item.saleState }}</td>
+      <td>$ {{ item.referencialPrice | number }}</td>
+      <td>$ {{ item.price | number }}</td>
+      <td>{{ item.createdAt | date : "dd/MM/yy" : "es-Cl" }}</td>
+      <td>
+        <button
+          class="btn btn-success"
+          (click)="openDialogImage(item.id!, item.title)"
+        >
+          IMÁGENES
+        </button>
+      </td>
+      <td>
+        <button class="btn btn-warning" (click)="openDialog(item)">
+          EDITAR
+        </button>
+      </td>
+      <!---->
+      <td>
+        <button class="btn btn-danger" (click)="eliminar(item)">
+          ELIMINAR
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>

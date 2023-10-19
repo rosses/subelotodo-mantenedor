@@ -1,0 +1,185 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
+  <div class="container-fluid">
+    <br /><br /><br />
+    <a class="navbar-brand"> </a>
+    <br />
+    <a class="navbar-brand">Agregar Producto</a>
+  </div>
+</nav>
+<form class="row g-3" [formGroup]="newprod">
+  <div class="col-md-6">
+    <label for="validationDefault01" class="form-label">Título</label>
+    <input
+      type="text"
+      class="form-control"
+      id="validationDefault01"
+      formControlName="title"
+      required
+    />
+  </div>
+  <div class="col-md-6">
+    <label for="validationDefault02" class="form-label">Descripción</label>
+    <input
+      type="text"
+      class="form-control"
+      id="validationDefault02"
+      formControlName="description"
+      required
+    />
+  </div>
+  <div class="col-6">
+    <label for="inputAddress" class="form-label">Precio referencial</label>
+    <input
+      type="number"
+      class="form-control"
+      id="input3"
+      formControlName="referencialPrice"
+      required
+    />
+  </div>
+  <div class="col-6">
+    <label for="inputAddress2" class="form-label">Precio</label>
+    <input
+      type="number"
+      class="form-control"
+      id="input4"
+      formControlName="price"
+      required
+    />
+  </div>
+  <div class="col-md-3">
+    <label for="inputState" class="form-label">Categoría</label>
+    <select
+      id="inputState"
+      class="form-select"
+      [(ngModel)]="selectedValue"
+      formControlName="categoryId"
+      (change)="getSubcat()"
+      required
+    >
+      <option [disabled]="true">- CATEGORÍA -</option>
+      <option *ngFor="let item of categorias" value="{{ item.id }}">
+        {{ item.name }}
+      </option>
+    </select>
+  </div>
+  <div class="col-md-3">
+    <label for="inputState" class="form-label">Subcategoría</label>
+    <select
+      id="inputState"
+      class="form-select"
+      [(ngModel)]="selectedSub"
+      formControlName="subcategoryId"
+      required
+    >
+      <option [disabled]="true">- SUBCATEGORÍA -</option>
+      <option *ngFor="let item of subcategorias" value="{{ item.id }}">
+        {{ item.name }}
+      </option>
+    </select>
+  </div>
+  <div class="col-md-3">
+    <label for="inputState" class="form-label">Región</label>
+    <select
+      id="inputState"
+      class="form-select"
+      [(ngModel)]="selectedreg"
+      formControlName="stateId"
+      (change)="getCities()"
+      required
+    >
+      <option [disabled]="true">- REGIÓN -</option>
+      <option *ngFor="let item of regiones" value="{{ item.id }}">
+        {{ item.name }}
+      </option>
+    </select>
+  </div>
+  <div class="col-md-3">
+    <label for="inputState" class="form-label">Comuna</label>
+    <select
+      id="inputState"
+      class="form-select"
+      [(ngModel)]="selectedcom"
+      formControlName="cityId"
+      required
+    >
+      <option [disabled]="true">- COMUNA -</option>
+      <option *ngFor="let item of comunas" value="{{ item.id }}">
+        {{ item.name }}
+      </option>
+    </select>
+  </div>
+
+  <div class="col-md-6">
+    <label for="inputState" class="form-label">Condición del producto</label>
+    <select
+      id="inputState"
+      class="form-select"
+      [(ngModel)]="selectedcon"
+      formControlName="selectedcon"
+      required
+    >
+      <option>Nuevo</option>
+      <option>Usado - Como Nuevo</option>
+      <option>Usado</option>
+    </select>
+  </div>
+  <div class="col-md-6">
+    <label for="inputState" class="form-label">Estado de la venta</label>
+    <select
+      id="inputState"
+      class="form-select"
+      [(ngModel)]="selectedest"
+      formControlName="selectedest"
+      required
+    >
+      <option selected>En venta...</option>
+      <option>Vendido</option>
+    </select>
+  </div>
+  <div class="col-md-1">
+    <label for="inputEmail4" class="form-label">Largo(Cm)</label>
+    <input
+      type="number"
+      class="form-control"
+      id="inputEmail4"
+      formControlName="largo"
+      required
+    />
+  </div>
+  <div class="col-md-1">
+    <label for="inputPassword4" class="form-label">Ancho(Cm)</label>
+    <input
+      type="number"
+      class="form-control"
+      id="inputPassword4"
+      formControlName="ancho"
+      required
+    />
+  </div>
+  <div class="col-1">
+    <label for="inputAddress" class="form-label">Alto(Cm)</label>
+    <input
+      type="number"
+      class="form-control"
+      id="inputEmail4"
+      formControlName="altura"
+      required
+    />
+  </div>
+  <div class="col-1">
+    <label for="inputAddress2" class="form-label">Peso(Kg)</label>
+    <input
+      type="number"
+      class="form-control"
+      id="inputEmail4"
+      formControlName="peso"
+      required
+    />
+  </div>
+  <div class="col-12">
+    <button type="submit" class="btn btn-primary" (click)="saveProduct()">
+      Guardar
+    </button>
+  </div>
+</form>

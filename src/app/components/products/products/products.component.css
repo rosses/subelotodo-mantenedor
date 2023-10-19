@@ -1,0 +1,17 @@
+table {
+    margin: 1%;
+    width: 98%;
+    vertical-align: middle;
+}
+
+select {
+    margin-right: 10px;
+}
+
+input {
+    margin-right: 10px;
+}
+
+button {
+    margin-right: 10px;
+}

@@ -1,0 +1,28 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
+  <div class="container-fluid">
+    <br /><br /><br />
+    <a class="navbar-brand"> </a>
+    <br />
+    <a class="navbar-brand">Agregar categoría</a>
+  </div>
+</nav>
+<form class="row g-3" [formGroup]="newcat">
+  <div class="col-md-6">
+    <label for="validationDefault01" class="form-label"
+      >Nombre de categoría</label
+    >
+    <input
+      type="text"
+      class="form-control"
+      id="validationDefault01"
+      formControlName="name"
+      required
+    />
+  </div>
+
+  <div class="col-12">
+    <button type="submit" class="btn btn-primary" (click)="postSubcat()">
+      Guardar
+    </button>
+  </div>
+</form>

@@ -1,0 +1,53 @@
+<app-navigation></app-navigation>
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <td>
+        <button class="btn btn-success" (click)="openDialogNewCat()">
+          NUEVA CATEGORÍA
+        </button>
+      </td>
+
+      <!--<form class="d-flex" role="search">
+          <input
+            class="form-control me-2"
+            type="search"
+            placeholder="Search"
+            aria-label="Search"
+          />
+          <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>-->
+    </div>
+  </div>
+</nav>
+<table class="table table-striped table-hover">
+  <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">CATEGORÍA</th>
+      <th scope="col">AGREGAR SUBCATEGORÍA</th>
+      <th scope="col">SUBCATEGORÍAS</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of categorias">
+      <th scope="row">{{ item.id }}</th>
+      <td>{{ item.name }}</td>
+      <td>
+        <button class="btn btn-success" (click)="openDialogNewSub(item)">
+          Agregar Subcategoría
+        </button>
+      </td>
+      <td>
+        <a
+          class="btn disabled"
+          aria-disabled="true"
+          role="button"
+          data-bs-toggle="button"
+          *ngFor="let items of item.subcategories"
+          >{{ items.name }}</a
+        >
+      </td>
+    </tr>
+  </tbody>
+</table>

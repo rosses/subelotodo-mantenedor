@@ -1,0 +1,22 @@
+:ng-deep .mat-mdc-dialog-container {
+    --mdc-dialog-container-color: white;
+    align-items: center;
+}
+
+
+form {
+    padding: 50px 50px;
+    text-align: center;
+}
+
+img {
+    width: 250px;
+    height: 250px;
+    object-fit: cover;
+    margin: 10px;
+}
+
+.img-container {
+    align-content: space-evenly;
+    width: 100%;
+}

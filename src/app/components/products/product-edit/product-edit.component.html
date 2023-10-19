@@ -1,0 +1,205 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
+  <div class="container-fluid">
+    <br /><br /><br />
+    <a class="navbar-brand"> </a>
+    <br />
+    <a class="navbar-brand">Editar Producto</a>
+  </div>
+</nav>
+<form class="row g-3" [formGroup]="editarProducto">
+  <div class="col-md-6">
+    <label for="validationDefault01" class="form-label">Título</label>
+    <input
+      type="text"
+      class="form-control"
+      id="validationDefault01"
+      formControlName="title"
+      required
+    />
+  </div>
+  <div class="col-md-6">
+    <label for="validationDefault02" class="form-label">Descripción</label>
+    <input
+      type="text"
+      class="form-control"
+      id="validationDefault02"
+      formControlName="description"
+      required
+    />
+  </div>
+  <div class="col-6">
+    <label for="inputAddress" class="form-label">Precio referencial</label>
+    <input
+      type="number"
+      class="form-control"
+      id="input3"
+      formControlName="referencialPrice"
+      required
+    />
+  </div>
+  <div class="col-6">
+    <label for="inputAddress2" class="form-label">Precio</label>
+    <input
+      type="number"
+      class="form-control"
+      id="input4"
+      formControlName="price"
+      required
+    />
+  </div>
+  <div class="col-md-3">
+    <label for="inputState" class="form-label">Categoría</label>
+    <select
+      id="inputState"
+      class="form-select"
+      (change)="getSubcat()"
+      formControlName="categoryId"
+      required
+    >
+      <option *ngFor="let item of categorias" ngValue="{{ item.id }}">
+        {{ item.name }}
+      </option>
+    </select>
+  </div>
+  <div class="col-md-3">
+    <label for="inputState" class="form-label">Subcategoría</label>
+    <select
+      id="inputState"
+      class="form-select"
+      formControlName="subcategoryId"
+      required
+    >
+      <option
+        *ngFor="let item of subcategorias"
+        ngValue="{{ item.id }}"
+        [selected]="item.id === editarProducto.value.subcategoryId"
+      >
+        {{ item.name }}
+      </option>
+    </select>
+  </div>
+  <div class="col-md-3">
+    <label for="inputState" class="form-label">Región</label>
+    <select
+      id="inputState"
+      class="form-select"
+      (change)="getCities()"
+      formControlName="stateId"
+      required
+    >
+      <option
+        *ngFor="let item of regiones"
+        ngValue="{{ item.id }}"
+        [selected]="item.id === editarProducto.value.stateId"
+      >
+        {{ item.name }}
+      </option>
+    </select>
+  </div>
+  <div class="col-md-3">
+    <label for="inputState" class="form-label">Comuna</label>
+    <select
+      id="inputState"
+      class="form-select"
+      formControlName="cityId"
+      required
+    >
+      <option
+        *ngFor="let item of comunas"
+        ngValue="{{ item.id }}"
+        [selected]="item.id === editarProducto.value.cityId"
+      >
+        {{ item.name }}
+      </option>
+    </select>
+  </div>
+
+  <div class="col-md-6">
+    <label for="inputState" class="form-label">Condición del producto</label>
+    <select
+      id="inputState"
+      class="form-select"
+      formControlName="condition"
+      required
+    >
+      <option [selected]="editarProducto.value.condition === 'Nuevo'">
+        Nuevo
+      </option>
+      <option
+        [selected]="editarProducto.value.condition === 'Usado - Como Nuevo'"
+      >
+        Usado - Como Nuevo
+      </option>
+      <option [selected]="editarProducto.value.condition === 'Usado'">
+        Usado
+      </option>
+    </select>
+  </div>
+  <div class="col-md-6">
+    <label for="inputState" class="form-label">Estado de la venta</label>
+    <select
+      id="inputState"
+      class="form-select"
+      formControlName="saleState"
+      required
+    >
+      <option
+        [selected]="editarProducto.value.saleState === 'En venta'"
+        value="En venta"
+      >
+        En venta
+      </option>
+      <option
+        [selected]="editarProducto.value.saleState === 'Vendido'"
+        value="Vendido"
+      >
+        Vendido
+      </option>
+    </select>
+  </div>
+  <div class="col-md-1">
+    <label for="inputEmail4" class="form-label">Largo(Cm)</label>
+    <input
+      type="number"
+      class="form-control"
+      id="inputEmail4"
+      formControlName="length"
+      required
+    />
+  </div>
+  <div class="col-md-1">
+    <label for="inputPassword4" class="form-label">Ancho(Cm)</label>
+    <input
+      type="number"
+      class="form-control"
+      id="inputPassword4"
+      formControlName="width"
+      required
+    />
+  </div>
+  <div class="col-1">
+    <label for="inputAddress" class="form-label">Alto(Cm)</label>
+    <input
+      type="number"
+      class="form-control"
+      id="inputEmail4"
+      formControlName="height"
+      required
+    />
+  </div>
+  <div class="col-1">
+    <label for="inputAddress2" class="form-label">Peso(Kg)</label>
+    <input
+      type="number"
+      class="form-control"
+      id="inputEmail4"
+      formControlName="weight"
+      required
+    />
+  </div>
+  <div class="col-12">
+    <button type="submit" class="btn btn-primary" (click)="postForm()">
+      Guardar Cambios
+    </button>
+  </div>
+</form>

@@ -1,0 +1,16 @@
+::ng-deep .mat-mdc-dialog-container {
+    --mdc-dialog-container-color: white;
+    align-items: center;
+}
+
+form {
+    padding: 50px 50px;
+}
+
+::webkit-scrollbar {
+    display: none;
+}
+
+label {
+    width: max-content;
+}

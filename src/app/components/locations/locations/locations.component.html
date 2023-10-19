@@ -1,0 +1,53 @@
+<app-navigation></app-navigation>
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <td>
+        <button class="btn btn-success" (click)="openDialogNewState()">
+          NUEVA REGIÓN
+        </button>
+      </td>
+
+      <!--<form class="d-flex" role="search">
+          <input
+            class="form-control me-2"
+            type="search"
+            placeholder="Search"
+            aria-label="Search"
+          />
+          <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>-->
+    </div>
+  </div>
+</nav>
+<table class="table table-striped table-hover">
+  <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">REGIÓN</th>
+      <th scope="col">AGREGAR COMUNA</th>
+      <th scope="col">COMUNAS</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of regiones">
+      <th scope="row">{{ item.id }}</th>
+      <td>{{ item.name }}</td>
+      <td>
+        <button class="btn btn-success" (click)="openDialogNewCity(item)">
+          Agregar comuna
+        </button>
+      </td>
+      <td>
+        <a
+          class="btn disabled"
+          aria-disabled="true"
+          role="button"
+          data-bs-toggle="button"
+          *ngFor="let items of item.cities"
+          >{{ items.name }}</a
+        >
+      </td>
+    </tr>
+  </tbody>
+</table>
