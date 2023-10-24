@@ -30,6 +30,10 @@ export class LoginComponent implements OnInit {
     if (localStorage.getItem("token")) {
       this.router.navigate(['productos'])
     }
+    if (localStorage.getItem("userType")=='3') {
+      localStorage.clear();
+      this.router.navigate(['login'])
+    }
   }
 
   onLogin(form: any){

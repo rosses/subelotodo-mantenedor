@@ -120,6 +120,12 @@ export class ProductsComponent implements OnInit {
     if (!localStorage.getItem("token")) {
       this.router.navigate(['login'])
     }
+    
+    if (localStorage.getItem("userType")=='3') {
+      localStorage.clear();
+      this.router.navigate(['login'])
+    }
+    
     this.subcategorias=[];
     this.comunas=[];
     this.selectedValue='- CATEGORÍA -';

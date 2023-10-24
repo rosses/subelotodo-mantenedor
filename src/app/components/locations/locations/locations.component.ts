@@ -22,6 +22,8 @@ export class LocationsComponent implements OnInit {
   constructor(private router:Router,private stateserv:StateService, private dialog:MatDialog) {
   }
 
+  admin=localStorage.getItem("userType");
+
   checkLocalStorage(){
     if (!localStorage.getItem("token")) {
       this.router.navigate(['login'])
@@ -42,6 +44,13 @@ export class LocationsComponent implements OnInit {
   ngOnInit():void{
     if (!localStorage.getItem("token")) {
       this.router.navigate(['login'])
+    }
+    if (localStorage.getItem("userType")=='3') {
+      localStorage.clear();
+      this.router.navigate(['login'])
+    }
+    if(this.admin=='2'){
+      this.router.navigate(['productos'])
     }
     this.stateserv.getStates().subscribe(data=>{
       this.regiones=data;

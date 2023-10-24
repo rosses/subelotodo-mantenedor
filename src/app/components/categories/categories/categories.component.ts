@@ -14,6 +14,8 @@ import { CategoriesAddComponent } from '../categories-add/categories-add.compone
 })
 export class CategoriesComponent implements OnInit {
 
+  admin=localStorage.getItem("userType");
+
   checkLocalStorage(){
     if (!localStorage.getItem("token")) {
       this.router.navigate(['login'])
@@ -41,6 +43,17 @@ export class CategoriesComponent implements OnInit {
     if (!localStorage.getItem("token")) {
       this.router.navigate(['login'])
     }
+    
+    if (localStorage.getItem("userType")=='3') {
+      localStorage.clear();
+      this.router.navigate(['login'])
+    }
+    
+    if(this.admin=='2'){
+      this.router.navigate(['productos'])
+      console.log(this.admin)
+    }
+
     this.categoryserv.getCategories().subscribe(data=>{
       this.categorias=data;
     })
