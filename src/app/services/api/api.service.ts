@@ -14,10 +14,8 @@ export class ApiService {
   constructor(private http:HttpClient) { }
 
   loginByEmail(form:LoginModel):Observable<ResponseModel>{
-
+    
     let direction=this.API_URI+'/login';
     return this.http.post<ResponseModel>(direction,form);
-
   }
-
 }

@@ -38,6 +38,7 @@ export class LoginComponent implements OnInit {
 
   onLogin(form: any){
     this.api.loginByEmail(form).subscribe(data=>{
+      console.log(data)
       let dataResponse:ResponseModel = data;
       if (dataResponse.status=='ok') {
         localStorage.setItem("userId",dataResponse.id)
@@ -50,5 +51,4 @@ export class LoginComponent implements OnInit {
       }
     });
   }
-
 }
