@@ -10,7 +10,7 @@ import { ProductImageModel } from 'src/app/models/productImage';
 })
 export class ProductsService {
 
-  API_URI = 'http://localhost:8000/api'
+  API_URI = 'https://subelotodo-api-grw4z.ondigitalocean.app/api'
 
   constructor(private http: HttpClient) { }
 
