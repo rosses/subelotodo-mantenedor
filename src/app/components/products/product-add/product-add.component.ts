@@ -19,12 +19,16 @@ import { FormControl, FormGroup, FormsModule } from '@angular/forms';
 })
 export class ProductAddComponent implements OnInit {
 
-  
-
-  categorias:CategoryModel[]=[];
-  subcategorias:SubcategoryModel[]=[];
   regiones:StateModel[]=[];
   comunas:CityModel[]=[];
+  categorias:CategoryModel[]=[];
+  subcategorias:SubcategoryModel[]=[];
+  saleStates:String[]=['En Venta',
+  'Vendido',];
+  productConditions:String[]=['Nuevo',
+    'Usado - Como Nuevo',
+    'Usado - Buen Estado',
+    'Usado - Aceptable',];
   selectedValue:string='- CATEGORÍA -';
   selectedSub:string='- SUBCATEGORÍA -';
   selectedreg:string='- REGIÓN -';
@@ -69,8 +73,8 @@ export class ProductAddComponent implements OnInit {
           'cityId':parseInt(this.newprod.value.cityId!),
           'stateId':parseInt(this.newprod.value.stateId!),
           'description':this.newprod.value.description!,
-          'condition':this.selectedcon,
-          'saleState':this.selectedest,
+          'condition':this.newprod.value.condition!,
+          'saleState':this.newprod.value.saleState!,
           'referencialPrice':this.newprod.value.referencialPrice!,
           'price':this.newprod.value.price!,
           'userId':parseInt(localStorage.getItem("userId")!),
@@ -79,10 +83,10 @@ export class ProductAddComponent implements OnInit {
           'width':this.newprod.value.ancho!,
           'weight':this.newprod.value.peso!,
         }
-      ).subscribe(data=>{console.log(data)});
+      ).subscribe(data=>{console.log(data),
+        window.location.reload()});
       console.log(this.prodservice)
     this.close()
-    window.location.reload();
   }
 
   getSubcat():void{

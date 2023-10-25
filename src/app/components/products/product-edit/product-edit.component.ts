@@ -22,6 +22,12 @@ export class ProductEditComponent implements OnInit {
   subcategorias:SubcategoryModel[]=[];
   regiones:StateModel[]=[];
   comunas:CityModel[]=[];
+  saleStates:String[]=['En Venta',
+  'Vendido',];
+  productConditions:String[]=['Nuevo',
+    'Usado - Como Nuevo',
+    'Usado - Buen Estado',
+    'Usado - Aceptable',];
   
   constructor(@Inject(MAT_DIALOG_DATA) private data: any,private activerouter:ActivatedRoute,private router:Router,private categoryserv:CategoriesService, private stateserv:StateService, private dialog:MatDialog,private citiesserv:CityService,private dialogRef: MatDialogRef<ProductEditComponent>,private productservices:ProductsService) {
   }
@@ -106,9 +112,9 @@ export class ProductEditComponent implements OnInit {
       'length':this.editarProducto.value.length!,
       'width':this.editarProducto.value.width!,
       'weight':this.editarProducto.value.weight!,
-    }).subscribe(data=>{console.log(data)})
+    }).subscribe(data=>{console.log(data),
+      window.location.reload()})
     this.close();
-    window.location.reload();
   }
 
   close(): void {

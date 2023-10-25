@@ -122,7 +122,8 @@
       <th scope="col">PRECIO</th>
       <th scope="col">SE AGREGÓ</th>
       <th scope="col"></th>
-      <th scope="col"></th>
+      <th scope="col" *ngIf="admin == '1'"></th>
+      <th scope="col" *ngIf="admin == '1'"></th>
     </tr>
   </thead>
   <tbody>
@@ -151,13 +152,13 @@
           IMÁGENES
         </button>
       </td>
-      <td>
+      <td *ngIf="admin == '1'">
         <button class="btn btn-warning" (click)="openDialog(item)">
           EDITAR
         </button>
       </td>
       <!---->
-      <td>
+      <td *ngIf="admin == '1'">
         <button class="btn btn-danger" (click)="eliminar(item)">
           ELIMINAR
         </button>

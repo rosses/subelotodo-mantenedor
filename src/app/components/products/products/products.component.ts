@@ -125,14 +125,14 @@ export class ProductsComponent implements OnInit {
       localStorage.clear();
       this.router.navigate(['login'])
     }
-    
+
     this.subcategorias=[];
     this.comunas=[];
     this.selectedValue='- CATEGORÍA -';
     this.selectedSub='- SUBCATEGORÍA -';
     this.selectedreg='- REGIÓN -';
     this.selectedcom='- COMUNA -';
-    if (this.admin=='0') {
+    if (this.admin=='1') {
       this.product.getProducts().subscribe(data=>{
         this.productos=data;
       })

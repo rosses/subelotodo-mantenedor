@@ -1,8 +1,0 @@
-{
-  "/api/*": {
-    "target": "https://subelotodo-api-grw4z.ondigitalocean.app",
-    "secure": false,
-    "changeOrigin": true,
-    "logLevel": "debug" 
-  }
-}

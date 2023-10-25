@@ -25,9 +25,9 @@ export class CitiesAddComponent {
   
 
   postCity():void{
-    this.cityserv.saveCity({'name':this.newCity.value.name!,'stateId':this.newCity.value.stateId!}).subscribe(data=>{console.log(data)});
+    this.cityserv.saveCity({'name':this.newCity.value.name!,'stateId':this.newCity.value.stateId!}).subscribe(data=>{console.log(data),
+      window.location.reload()});
     this.close()
-    window.location.reload();
   }
 
 }

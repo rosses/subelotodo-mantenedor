@@ -29,8 +29,8 @@ export class StatesAddComponent {
   
 
   postState():void{
-    this.stateserv.saveState({'name':this.newState.value.name!}).subscribe(data=>{console.log(data)});
+    this.stateserv.saveState({'name':this.newState.value.name!}).subscribe(data=>{console.log(data),
+      window.location.reload()});
     this.close()
-    window.location.reload();
   }
 }

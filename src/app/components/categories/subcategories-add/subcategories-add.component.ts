@@ -28,10 +28,10 @@ export class SubcategoriesAddComponent {
   
 
   postSubcat():void{
-    this.categoryserv.saveSubcategory({'name':this.newsubcat.value.name!,'categoryId':this.newsubcat.value.categoryId!}).subscribe(data=>{console.log(data)});
+    this.categoryserv.saveSubcategory({'name':this.newsubcat.value.name!,'categoryId':this.newsubcat.value.categoryId!}).subscribe(data=>{console.log(data),window.location.reload()});
     this.close()
     
-    window.location.reload();
+    
   }
 
 }

@@ -46,7 +46,8 @@ export class ImagesComponent implements OnInit{
           this.prodservice.postProductImage({
             'productId':parseInt(this.product),
             'filePath':value.name+value.type.replace('/','.'),
-          }).subscribe(data=>{console.log(data)});
+          }).subscribe(data=>{console.log(data),
+            window.location.reload()});
         }
     });
 

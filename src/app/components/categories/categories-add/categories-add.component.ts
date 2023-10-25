@@ -25,9 +25,9 @@ export class CategoriesAddComponent {
   
 
   postSubcat():void{
-    this.categoryserv.saveCategory({'name':this.newcat.value.name!}).subscribe(data=>{console.log(data)});
+    this.categoryserv.saveCategory({'name':this.newcat.value.name!}).subscribe(data=>{console.log(data),window.location.reload()});
     this.close()
     
-    window.location.reload();
+    
   }
 }

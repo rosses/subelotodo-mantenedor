@@ -116,12 +116,13 @@
       id="inputState"
       class="form-select"
       [(ngModel)]="selectedcon"
-      formControlName="selectedcon"
+      formControlName="condition"
       required
     >
-      <option>Nuevo</option>
-      <option>Usado - Como Nuevo</option>
-      <option>Usado</option>
+      <option [disabled]="true">- Condición del producto -</option>
+      <option *ngFor="let item of productConditions" value="{{ item }}">
+        {{ item }}
+      </option>
     </select>
   </div>
   <div class="col-md-6">
@@ -130,11 +131,13 @@
       id="inputState"
       class="form-select"
       [(ngModel)]="selectedest"
-      formControlName="selectedest"
+      formControlName="saleState"
       required
     >
-      <option selected>En venta...</option>
-      <option>Vendido</option>
+      <option [disabled]="true">- Estado de la venta -</option>
+      <option *ngFor="let item of saleStates" value="{{ item }}">
+        {{ item }}
+      </option>
     </select>
   </div>
   <div class="col-md-1">

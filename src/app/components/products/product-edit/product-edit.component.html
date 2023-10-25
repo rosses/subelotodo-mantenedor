@@ -122,16 +122,12 @@
       formControlName="condition"
       required
     >
-      <option [selected]="editarProducto.value.condition === 'Nuevo'">
-        Nuevo
-      </option>
       <option
-        [selected]="editarProducto.value.condition === 'Usado - Como Nuevo'"
+        *ngFor="let item of productConditions"
+        ngValue="{{ item }}"
+        [selected]="item === editarProducto.value.condition"
       >
-        Usado - Como Nuevo
-      </option>
-      <option [selected]="editarProducto.value.condition === 'Usado'">
-        Usado
+        {{ item }}
       </option>
     </select>
   </div>
@@ -144,16 +140,11 @@
       required
     >
       <option
-        [selected]="editarProducto.value.saleState === 'En venta'"
-        value="En venta"
+        *ngFor="let item of saleStates"
+        ngValue="{{ item }}"
+        [selected]="item === editarProducto.value.saleState"
       >
-        En venta
-      </option>
-      <option
-        [selected]="editarProducto.value.saleState === 'Vendido'"
-        value="Vendido"
-      >
-        Vendido
+        {{ item }}
       </option>
     </select>
   </div>
