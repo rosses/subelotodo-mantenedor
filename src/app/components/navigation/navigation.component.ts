@@ -11,6 +11,7 @@ export class NavigationComponent {
   constructor( private router:Router){}
 
   admin=localStorage.getItem("userType");
+  userName=localStorage.getItem("userName");
 
   logout():void{
     localStorage.clear();

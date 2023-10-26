@@ -45,5 +45,13 @@
       </ul>
     </div>
   </div>
-  <button type="button" class="btn btn-dark" (click)="logout()">Salir</button>
+  <label for="userbutton">{{ userName }} </label>
+  <button
+    name="userbutton"
+    type="button"
+    class="btn btn-dark"
+    (click)="logout()"
+  >
+    Salir
+  </button>
 </nav>

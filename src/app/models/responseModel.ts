@@ -5,4 +5,5 @@ export interface ResponseModel{
     result:any;
     msg:any;
     token:any;
+    name:string;
 }
